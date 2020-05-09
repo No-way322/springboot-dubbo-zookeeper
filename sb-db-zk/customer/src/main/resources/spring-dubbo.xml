@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://code.alibabatech.com/schema/dubbo
+       http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+    <!--    用于配置当前应用信息，不管该应用是提供者还是消费者-->
+    <dubbo:application name="consumer"/>
+    <!--    用于配置连接注册中心相关信息-->
+    <dubbo:registry address="zookeeper://120.79.250.26:2181"/>
+    <!--    用于配置提供服务的协议信息，协议由提供方指定，消费方被动接受-->
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <!--    用于创建一个远程服务代理，一个引用可以指向多个注册中心-->
+    <dubbo:reference id="userService" check="false" interface="com.zx.common.service.UserService"/>
+    <!--    s-->
+    <dubbo:annotation package="controller"/>
+</beans>
